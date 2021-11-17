@@ -1,0 +1,18 @@
+
+#Look for shells:
+echo Looking for shell availability and doing trivial tests
+
+which which
+
+which sh ; echo $?
+which ksh ; echo $?
+which bash ; echo $?
+which zsh ; echo $?
+sh shtest.sh
+
+which csh ; echo $?
+which tcsh ; echo $?
+csh ctest.csh
+
+which nonsh ; echo $?
+
