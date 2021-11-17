@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#d=`date +"%j"`
+d=0
+if [ $# -eq 2 ] ; then
+  find * -type f -mtime +`expr 365 \* $1 + $d ` -mtime -`expr 365 \* $2 + $d ` -mtime -18000 2> /dev/null
+else
+  find * -type f -mtime +`expr 365 \* $1 + $d ` -mtime -18000 2> /dev/null
+fi

@@ -1,0 +1,7 @@
+module load HPSS/5.0.2.5
+
+for d in *.tar *.tar.gz *.tgz
+do
+  hsi put $d : /NCEPDEV/emc-marine/5year/Robert.Grumbine/$d
+#  rm  $d
+done

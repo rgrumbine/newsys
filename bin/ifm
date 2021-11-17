@@ -1,0 +1,20 @@
+#!/bin/sh
+#Move a file (Arg 1) to a directory (arg 2) if a file of this
+#  name does not already exist there
+#Robert Grumbine
+#Last Modified 22 July 1999
+#Ensure that destination isn't a directory either 8 November 2001
+#Ensure that destination is not a file in a directory above 5 December 2001
+
+#set -x
+
+if [ $# -ne 2 ] ; then
+  echo "Need a source file and a destination directory"
+  exit
+else
+  if [ ! -f $2 -a ! -f $2/$1 -a ! -d $2/$1 ] ; then
+    mv  -n $1 $2
+   else
+    echo cannot move $1 to $2
+  fi
+fi

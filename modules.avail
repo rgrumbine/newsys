@@ -1,0 +1,223 @@
+
+------------------------------------------------------------------------------------------------------------------------------------------
+The following is a list of the modules currently available:
+------------------------------------------------------------------------------------------------------------------------------------------
+  ansys: ansys/2019.2
+
+  antlr: antlr/2.7.7
+
+  armforge: armforge/19.1.4
+
+  armreports: armreports/19.1.4
+
+  boost: boost/1.70
+
+  cairo: cairo/1.17.2
+
+  cdo: cdo/1.9.5
+
+  chapel: chapel/1.18
+
+  chem: chem/emc
+
+  cmake: cmake/3.15.4
+
+  cnvgrib: cnvgrib/3.1.1
+
+  comsol: comsol/5.4
+
+  contrib: contrib
+    User Contributed software 
+
+  cp2k: cp2k/cp2k
+
+  cuda: cuda/10.1.2
+
+  eccodes: eccodes/2.8.2
+
+  eigen: eigen/3.3.7
+
+  esmf: esmf/7.1.0r, esmf/8.0.0
+
+  ferret: ferret/7.5.0
+
+  ffmpeg: ffmpeg/4.2.1
+
+  fftw3: fftw3/3.3.8
+
+  flowpsi: flowpsi/emc
+
+  fsi: fsi/fsi
+
+  g2lib: g2lib/3.1.0
+
+  gaussian: gaussian/gaussian
+
+  gcc: gcc/8.3.0
+
+  gd: gd/2.0.34
+
+  gempak: gempak/7.5.1
+
+  git: git/2.21.0
+
+  gnuplot: gnuplot/5.2.7
+
+  go: go/1.13.5
+
+  grace: grace/5.1.25
+
+  grads: grads/2.2.1
+
+  gromacs: gromacs/gromacs, gromacs/2019.4
+
+  hdf4: hdf4/4.2.14
+
+  hdf5: hdf5/1.10.4, hdf5/1.10.5-parallel, hdf5/1.10.5
+
+  hwloc: hwloc/2.1.0
+
+  hyperworks: hyperworks/2019.1
+
+  idl: idl/8.5.0
+
+  idv: idv/5.7
+
+  impi: impi/2018.4, impi/2019.6, impi/2020
+
+  inspector: inspector/2018.4, inspector/2019.5, inspector/2020
+
+  intel: intel/2018.4, intel/2019.5, intel/2020
+
+  intelpython2: intelpython2/2018.4, intelpython2/2019.5
+
+  intelpython3: intelpython3/2018.4, intelpython3/2019.5, intelpython3/2020
+
+  jasper: jasper/1.900.1
+
+  joey: joey/joey-code
+    Code that matters. 
+
+  jpeg: jpeg/9c
+
+  llvm: llvm/7.1.0
+
+  local: local
+
+  loci: loci/emc
+
+  lstc: lstc
+
+  maa146: maa146/biocontainers
+
+  matlab: matlab/2019b
+
+  maven: maven/3.6.3
+
+  mesa: mesa/19.2.2
+
+  met: met/met, met/9.0
+
+  mkl: mkl/2018.4, mkl/2019.5, mkl/2020
+
+  motif: motif/2.3.4
+
+  mpich: mpich/3.3.1
+
+  munge: munge/0.5.13
+
+  namd: namd/2.13
+
+  nccmp: nccmp/1.8.5
+
+  nceplibs: nceplibs/nceplibs
+
+  ncl: ncl/6.6.2
+
+  nco: nco/4.8.1
+
+  ncview: ncview/2.1.5
+
+  netcdf: netcdf/4.7.2-parallel, netcdf/4.7.2
+
+  noaatools: noaatools/1.0
+
+  nwchem: nwchem/nwchem
+
+  openfoam: openfoam/foam-X
+
+  openmpi: openmpi/4.0.2
+
+  ovito: ovito/2.9.0
+
+  p4vasp: p4vasp/0.3.30
+
+  paraview: paraview/5.7.0, paraview/5.8.0
+
+  pdsh: pdsh/2.34
+
+  perl: perl/5.30.1
+
+  pgi: pgi/2019
+
+  pnetcdf: pnetcdf/1.12.0
+
+  pointwise: pointwise/18.3.1
+
+  python: python/3.7.5
+
+  qchem: qchem/qchem
+
+  qt: qt/5.12.1
+
+  quantumespresso: quantumespresso/6.4.1
+
+  r: r/3.5.2
+
+  rocoto: rocoto/1.3.1
+
+  rstudio: rstudio/1.2.5033
+
+  singularity: singularity/3.5.2
+
+  slurm: slurm/19.05.3-2
+
+  szip: szip/2.1.1
+
+  tecplot360: tecplot360/2018.2
+
+  thermocalc: thermocalc/2018b
+
+  udunits: udunits/2.2.26
+
+  vmd: vmd/1.9.3
+
+  vtune: vtune/2018.4, vtune/2019.5, vtune/2020
+
+  w3lib: w3lib/2.0.6
+
+  wgrib: wgrib/1.8.0b, wgrib/2.0.8
+
+  xalt: xalt/2.8.0
+
+  xpdf: xpdf/4.02
+
+  zlib: zlib/1.2.11
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+To learn more about a package execute:
+
+   $ module spider Foo
+
+where "Foo" is the name of a module.
+
+To find detailed information about a particular package you
+must specify the version if there is more than one version:
+
+   $ module spider Foo/11.1
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
+

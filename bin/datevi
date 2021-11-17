@@ -1,0 +1,5 @@
+#!/bin/sh
+
+touch -r $1 /tmp/$1
+vi $1
+touch -r /tmp/$1 $1

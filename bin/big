@@ -1,0 +1,7 @@
+#!/bin/sh
+#Robert Grumbine
+
+size=`mysize | tail -1 | cut -f1 -d'	'`
+minsize=`expr $size \/ 10 `
+echo Files larger than 10% of du: $minsize
+find . -size +$minsize -print

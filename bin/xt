@@ -1,0 +1,4 @@
+#!/bin/ksh
+#Robert Grumbine 28 Dec 2015 (most recent mod)
+#nohup xterm -geometry 90x37 -fg black -bg white -sb -sl 500 -j -ls ksh -fn 10x20 &
+nohup xterm -geometry 90x37 -fg black -bg white -sb -sl 1000 -j -fn 10x20 &

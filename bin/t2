@@ -1,0 +1,4 @@
+#!/bin/sh
+#26 Jan 2006  Robert Grumbine
+
+find . -type d -user $USER -mtime -5 -exec dirtime {} \;

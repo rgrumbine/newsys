@@ -1,0 +1,17 @@
+#!/bin/bash
+#Robert Grumbine
+
+#echo in dcmp
+if [ -f $2/$1 ] ; then
+  cmp $1 $2/$1
+  if [ $? -eq 0 ] ; then
+    if [ $2/$1 -nt $1 ] ; then
+      echo $2/$1 is newer than $1
+      chmod u+w $2/$1
+      mv $1 $2/$1
+    else
+      chmod u+w $1
+      rm $1
+    fi
+  fi
+fi

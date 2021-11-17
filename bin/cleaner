@@ -1,0 +1,6 @@
+#!/bin/sh
+#Robert Grumbine
+
+sort -u ~/.bash_history > /tmp/a.$$
+vi /tmp/a.$$
+mv /tmp/a.$$ ~/.bash_history

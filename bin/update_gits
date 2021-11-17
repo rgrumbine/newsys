@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for d in rgdev/CICE/icepack/ rgdev/CICE/ para/drift/ para/mmablib/mmablib/ para/mmablib/ice_scoring/
+do
+  cd /u/Robert.Grumbine/$d
+  git pull
+done

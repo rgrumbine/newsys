@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -f $1 -a -f $2/$1 ] ; then
+  x=`ddiff $1 $2 | wc -l`
+  echo $x $1 $2
+fi

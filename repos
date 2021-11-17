@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#Bob forks:
+base=`pwd`
+for repo in mmablib ice_scoring CICE Icepack SIDFEx concentration ufs-weather-model global-workflow ufs-s2s-evaluation 
+do
+  if [ ! -d $repo ] ; then
+    git clone --recursive https://github.com/rgrumbine/$repo $repo
+    cd $repo 
+    git submodule update --init --recursive
+    git checkout develop
+    cd $base
+  fi
+done
+
+#Renaming involved:
+git clone https://github.com/NOAA-EMC/drift_grumbine drift
+cd drift
+git checkout sidfex
+
+#Cannot fork, just copy:
+git clone https://github.com/JCSDA-internal/soca-science.git
+
+exit
+
+module purge
+module-discovery
+
+#mmablib:
+cd sorc
+./makelibombF.sh
+./makelibombC.sh
+#ice_scoring
+#-- create a makeall.sh
+
+#CICE:
+?
+
+#ufs-weather-model
+#(ca. 20 minutes)
+#build.sh -- with appropriate environment

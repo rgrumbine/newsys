@@ -1,0 +1,4 @@
+#!/bin/sh
+#Robert Grumbine
+
+du $* | sort -n

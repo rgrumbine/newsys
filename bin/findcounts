@@ -1,0 +1,7 @@
+#!/bin/sh
+#Robert Grumbine
+
+#set -x
+fn=`basename $1`
+x=`/u/Robert.Grumbine/bin/f $fn | wc -l`
+echo $1 $x times

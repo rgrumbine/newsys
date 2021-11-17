@@ -1,0 +1,4 @@
+#!/bin/sh
+#Robert Grumbine 24 Apr 2008
+
+du $* | grep -v '[a-zA-Z0-9]\/' | sort -nr

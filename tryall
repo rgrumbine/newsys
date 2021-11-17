@@ -1,0 +1,27 @@
+#!/bin/sh
+
+module purge
+
+for m in ansys/ antlr/ armforge/ armreports/ boost/ cairo/ chapel/ cmake/ cnvgrib/ comsol/ contrib eigen/ ferret/ ffmpeg/ fftw3/ g2lib/ gd/ gempak/ git/ gnuplot/ go/ grads/ hwloc/ hyperworks/ idl/ idv/ inspector/ jasper/ llvm/ local lstc matlab/ maven/ mesa/ mkl/ motif/ munge/ namd/ ovito/ p4vasp/ paraview/ pdsh/ perl/ pointwise/ qt/ quantumespresso/ r/ rstudio/ singularity/ slurm/ szip/ tecplot360/ thermocalc/ udunits/ vmd/ vtune/ w3lib/ wgrib/ xalt/ xpdf/
+do
+  g=`echo $m | cut -f1 -d\/`
+  module load $g 2> ${g}.out
+done
+module list
+module list 2> list.final
+
+exit
+
+#compiler-related:
+for m in cuda gcc impi mpich openmpi pgi 
+
+#?
+for m in grace gromacs 
+
+#python-related
+for m in python intelpython2 intelpython3
+
+#netcdf-related:
+for m in hdf5 esmf nccmp ncl nco ncview netcdf pnetcdf 
+#esmf loads many modules, including hdf5, slurm, munge, openmpi, ...
+

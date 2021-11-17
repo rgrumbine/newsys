@@ -1,0 +1,4 @@
+#!/bin/sh
+#Robert Grumbine
+
+diff $1 $2/$1
