@@ -2,65 +2,24 @@
 #include <mpi.h>
 using namespace std;
 
-#define SCALE 6
-// Approx 1 min on 1 cpu on 2021 desk, scale = 6
-#define NSTEP   4750
-#define freq      95
+#define SCALE 1
+// Approx 1 min on 1 cpu on 2021 desk, scale = 1
+#define NSTEP 110000
+#define freq      12
 
+//// Approx 1 min on 1 cpu on 2021 desk, scale = 6
+//#define NSTEP  3888
+//#define freq     72
 
+// Something like global ocean
+#define dx  (111.1*1000./(float) SCALE)
+#define dy  (111.1*1000./(float) SCALE)
+#define dt  (300./(float) SCALE)
 
-// Something like lake michigan
-#define dx  (1000./(float) SCALE)
-#define dy  (1000./(float) SCALE)
-#define dt  (20./(float) SCALE)
-
-#define NX (125.e3 / dx )
-#define NY (450.e3 / dy )
-#define gee 9.8
-
-// Approx 1 min on 1 cpu on 2021 desk, 3000*10800 grid (scale = 24)
-//#define NSTEP    30
-//#define freq      1
-// Approx 1 min on 1 cpu on 2021 desk, 2500x9000 grid (scale = 20)
-//#define NSTEP    45
-//#define freq      1
-// Approx 1 min on 1 cpu on 2021 desk, scale = 16
-//#define NSTEP   225
-//#define freq      5
-// Approx 1 min on 1 cpu on 2021 desk, scale = 14
-//#define NSTEP   420
-//#define freq      7
-// Approx 1 min on 1 cpu on 2021 desk, scale = 12
-//#define NSTEP   850
-//#define freq     17
-// Approx 1 min on 1 cpu on 2021 desk, 1250x4500 grid (scale = 10)
-//#define NSTEP  1450
-//#define freq     29
-
-// Approx 1 min on 1 cpu on 2021 desk, scale = 9
-//#define NSTEP   2000
-//#define freq      40
-// Approx 1 min on 1 cpu on 2021 desk, scale = 8
-//#define NSTEP   2600
-//#define freq      52
-// Approx 1 min on 1 cpu on 2021 desk, scale = 7
-//#define NSTEP   3500
-//#define freq      70
-// Approx 1 min on 1 cpu on 2021 desk, scale = 5
-//#define NSTEP   7700
-//#define freq     140
-// Approx 1 min on 1 cpu on 2021 desk, scale = 4
-//#define NSTEP   14500
-//#define freq      500
-// Approx 1 min on 1 cpu on 2021 desk, scale = 3
-//#define NSTEP   30000
-//#define freq      500
-// Approx 1 min on 1 cpu on 2021 desk, scale = 2
-//#define NSTEP  100000
-//#define freq     1000
-// Approx 1 min on 1 cpu on 2021 desk, 125x450 grid (scale = 1)
-//#define NSTEP 400000
-//#define freq   10000   
+#define NX (360*SCALE)
+#define NY (180*SCALE)
+#define gee     9.8
+#define href 4000.0
 
 #define DTYPE float
 
@@ -94,7 +53,6 @@ int main(int argc, char *argv[]) {
   global_ny = (int) (0.5 + NY);
   if (global_ny%nprocs != 0) global_ny += nprocs - global_ny%nprocs ;
   printf("run length is %f seconds, %f minutes\n",nstep*dt, nstep*dt/60 );
-  printf("global_nx, global_ny = %f %f rounded %d %d\n",NX, NY, global_nx, global_ny);
 
 // Here we would figure out where we are in the stencil and parcel out the
 //   correct sizes for each processor.  For now, blindly pass out local=global
@@ -114,7 +72,7 @@ int main(int argc, char *argv[]) {
 
   tmpeta.resize(nx, ny);
   h.resize(nx, ny);
-  h.set((DTYPE) 100.);
+  h.set((DTYPE) href);
   u.resize(nx, ny);
   v.resize(nx, ny);
   u.set((DTYPE) 0.);
@@ -192,8 +150,6 @@ int main(int argc, char *argv[]) {
         MPI_Isend(sendp, 3*nx, MPI_FLOAT, psendp, itag1, MPI_COMM_WORLD, &requests[0]);
         MPI_Irecv(recvp, 3*nx, MPI_FLOAT, precvp, itag1, MPI_COMM_WORLD, &requests[1]);
         MPI_Waitall(2, &requests[0], MPI_STATUSES_IGNORE);
-        //MPI_Waitall(1, &requests[0], MPI_STATUSES_IGNORE);
-        //MPI_Waitall(1, &requests[1], MPI_STATUSES_IGNORE);
         
         sloc.j = ny - 1;
         for (sloc.i = 0; sloc.i < nx; sloc.i ++) {
@@ -213,7 +169,7 @@ int main(int argc, char *argv[]) {
         MPI_Irecv(recvm, 3*nx, MPI_FLOAT, precvm, itag1, MPI_COMM_WORLD, &requests[0]);
         MPI_Isend(sendm, 3*nx, MPI_FLOAT, psendm, itag1, MPI_COMM_WORLD, &requests[1]);
         MPI_Waitall(2, &requests[0], MPI_STATUSES_IGNORE);
-        //MPI_Waitall(1, &requests[1], MPI_STATUSES_IGNORE);
+        
         sloc.j = 1;
         for (sloc.i = 0; sloc.i < nx; sloc.i ++) {
           eta[np][sloc] = recvm[sloc.i];
@@ -246,10 +202,7 @@ int main(int argc, char *argv[]) {
         MPI_Irecv(recvm, 3*nx, MPI_FLOAT, precvm, itag1, MPI_COMM_WORLD, &requests[2]);
         MPI_Isend(sendm, 3*nx, MPI_FLOAT, psendm, itag1, MPI_COMM_WORLD, &requests[3]);
 
-        MPI_Waitall(1, &requests[0], MPI_STATUSES_IGNORE);
-        MPI_Waitall(1, &requests[1], MPI_STATUSES_IGNORE);
-        MPI_Waitall(1, &requests[2], MPI_STATUSES_IGNORE);
-        MPI_Waitall(1, &requests[3], MPI_STATUSES_IGNORE);
+        MPI_Waitall(4, &requests[0], MPI_STATUSES_IGNORE);
 
         // Insert received data:
         sloc.j = ny - 1;
