@@ -1,7 +1,7 @@
 #!/bin/sh
 
-n=35
-nm=43
+n=48
+nm=51
 tot=0
 while [ $n -ge 0 ]
 do

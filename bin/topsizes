@@ -4,6 +4,8 @@
 if [ -f sizes ] ; then
   cat sizes | grep -v '[a-zA-Z0-9]\/' | sort -nr
 else
-  mysize $* > sizes
+  du $* > sizes
   cat sizes | grep -v '[a-zA-Z0-9]\/' | sort -nr
 fi
+
+#du $* | grep -v '[a-zA-Z0-9]\/' | sort -nr

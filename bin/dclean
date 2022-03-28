@@ -1,4 +1,4 @@
 #!/bin/sh
 #Robert Grumbine
 
-find . -type d -mtime +17200 -exec rmdir {} \; ; t2
+find . -type d -mtime +19000 -exec rmdir {} \; ; t2
