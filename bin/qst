@@ -1,0 +1,1 @@
+qstat $(qselect -u $USER )

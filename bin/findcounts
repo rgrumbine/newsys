@@ -3,5 +3,5 @@
 
 #set -x
 fn=`basename $1`
-x=`/home/Robert.Grumbine/bin/f $fn | wc -l`
+x=`/u/robert.grumbine/bin/f $fn | grep -v dfs.write | wc -l`
 echo $1 $x times
