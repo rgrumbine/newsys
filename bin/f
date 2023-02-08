@@ -1,4 +1,5 @@
 #!/bin/sh
+#set -x
 
 fn=`basename $1`
-find ~/* -type f -iname $fn -exec ls -l {} \; 2> /dev/null | sort -nr +4.0 -5.0
+find ~/*/* -type f -iname $fn -exec ls -l {} \; 2> /dev/null | sort -nr +4.0 -5.0

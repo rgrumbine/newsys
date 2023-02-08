@@ -2,7 +2,8 @@
 
 #Bob forks:
 base=`pwd`
-for repo in mmablib ice_scoring CICE Icepack SIDFEx concentration ufs-weather-model global-workflow ufs-s2s-evaluation 
+for repo in vessel_icing marine_visibility drift_olenic sea-ice evo_mos emily_intercompare hello opendrift ENIAC Icepack ufs-s2s-evaluation SIDFEx ice_scoring CICE ufs-weather-model global-workflow newdrift mmablib toolbox newsys 
+#emc:
 do
   if [ ! -d $repo ] ; then
     git clone --recursive https://github.com/rgrumbine/$repo $repo
@@ -13,13 +14,29 @@ do
   fi
 done
 
+
+#for repo in concentration drift_grumbine 
 #Renaming involved:
-git clone https://github.com/NOAA-EMC/drift_grumbine drift
-cd drift
-git checkout sidfex
+if [ ! -d drift ] ; then
+  git clone https://github.com/NOAA-EMC/drift_grumbine drift
+  cd drift
+  git checkout sidfex
+fi
+cd $base
+
+if [ ! -d concentration ] ; then
+  git clone https://github.com/NOAA-EMC/concentration 
+  cd concentration
+  git checkout develop
+fi
+cd $base
 
 #Cannot fork, just copy:
-git clone https://github.com/JCSDA-internal/soca-science.git
+if [ ! -d soca-science ] ; then
+  git clone https://github.com/JCSDA-internal/soca-science.git 
+  cd soca-science
+  git checkout develop
+fi
 
 exit
 
