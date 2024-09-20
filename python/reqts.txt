@@ -1,0 +1,12 @@
+matplotlib
+networkx
+numpy
+netCDF4
+pygrib
+
+scikit-learn
+scipy
+tensorflow
+xarray
+
+cartopy
