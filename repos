@@ -1,9 +1,9 @@
 #!/bin/sh
 
-#Bob forks:
 base=`pwd`
-for repo in vessel_icing marine_visibility drift_olenic sea-ice evo_mos emily_intercompare hello opendrift ENIAC Icepack ufs-s2s-evaluation SIDFEx ice_scoring CICE ufs-weather-model global-workflow newdrift mmablib toolbox newsys 
-#emc:
+
+#Bob's repos + forks:
+for repo in vessel_icing marine_visibility drift_olenic evo_mos Icepack ufs-s2s-evaluation SIDFEx ice_scoring newdrift mmablib toolbox newsys NOAA-Internship-Project emcpy meta_ice
 do
   if [ ! -d $repo ] ; then
     git clone --recursive https://github.com/rgrumbine/$repo $repo
@@ -14,32 +14,34 @@ do
   fi
 done
 
-
-#for repo in concentration drift_grumbine 
-#Renaming involved:
-if [ ! -d drift ] ; then
-  git clone https://github.com/NOAA-EMC/drift_grumbine drift
-  cd drift
-  git checkout sidfex
+#EMC repos
+for repo in drift_grumbine seaice-concentration
+do
+if [ ! -d $repo ] ; then
+  git clone https://github.com/NOAA-EMC/$repo 
+  cd $repo 
+  git submodule update --init --recursive
+  git checkout develop
+  cd $base
 fi
+done
 cd $base
 
-if [ ! -d concentration ] ; then
-  git clone https://github.com/NOAA-EMC/concentration 
-  cd concentration
-  git checkout develop
-fi
-cd $base
-
-#Cannot fork, just copy:
-if [ ! -d soca-science ] ; then
-  git clone https://github.com/JCSDA-internal/soca-science.git 
-  cd soca-science
-  git checkout develop
-fi
-
+# Larger repos
+# cice = ~1 min
+# ufs-weather ~7 min
+# global-workflow ~15 min
+for repo in CICE ufs-weather-model global-workflow 
+do
+  if [ ! -d $repo ] ; then
+    git clone --recursive https://github.com/rgrumbine/$repo $repo
+    cd $repo 
+    git submodule update --init --recursive
+    git checkout develop
+    cd $base
 exit
 
+# elementary building of executables, libraries, finding modules
 module purge
 module-discovery
 
